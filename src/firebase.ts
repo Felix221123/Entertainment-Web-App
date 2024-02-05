@@ -8,7 +8,7 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  apiKey: "AIzaSyDakI9hxU_hekAFMX3vvqLC7DesuevA2EA",
   authDomain: "entertainment-web-app-b6dc8.firebaseapp.com",
   projectId: "entertainment-web-app-b6dc8",
   storageBucket: "entertainment-web-app-b6dc8.appspot.com",
