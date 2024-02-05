@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useContext, useState , useEffect } from "react";
 // import { MovieData } from "./BOOKMARKED";
 import { MovieRecommeded } from "../MOVIES/MOVIES";
-
+// import DATA from "../../data.json"
 
 interface BookmarkContextProps {
     bookmarkedMovies: MovieRecommeded[];
@@ -61,6 +61,8 @@ export const BookmarkProvider = ({ children }: childProps) => {
         .catch((error) => console.error("Error fetching data:", error));
     }, []); // Empty dependency array ensures the effect runs only once
 
+    console.log(bookmarkedMovies);
+    
     return (
         <BookmarkContext.Provider value={{ bookmarkedMovies, toggleBookmark }}>
             {children}
