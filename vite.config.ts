@@ -7,5 +7,7 @@ export default defineConfig({
   plugins: [
     react(),
   ],
-  base : "/Entertainment-Web-App/"
+  build: {
+    outDir: 'build', // Make sure this matches the directory you are deploying to
+  },
 });
