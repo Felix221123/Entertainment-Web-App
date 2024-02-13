@@ -1,12 +1,13 @@
-import SEARCHICON from "../assets/svg_files/icon-search.svg";
-import EMPTYBOOKMARKEDICON from "../assets/svg_files/icon-bookmark-empty.svg";
-import PLAYICON from "../assets/svg_files/icon-play.svg";
-import NAVMOVIESICON from "../assets/svg_files/icon-nav-movies.svg";
-import FULLBOOKMARKEDICON from "../assets/svg_files/icon-bookmark-full.svg";
+import SEARCHICON from "/assets/svg_files/icon-search.svg";
+import EMPTYBOOKMARKEDICON from "/assets/svg_files/icon-bookmark-empty.svg";
+import PLAYICON from "/assets/svg_files/icon-play.svg";
+import NAVMOVIESICON from "/assets/svg_files/icon-nav-movies.svg";
+import FULLBOOKMARKEDICON from "/assets/svg_files/icon-bookmark-full.svg";
 import "./homeStyles.css";
-import { useState, useEffect } from "react";
+import { useState , useEffect } from "react";
+import data from "../../data.json";
 
-interface MovieTrending {
+interface Movie {
   isTrending: boolean;
   thumbnail: {
     trending: {
@@ -36,7 +37,7 @@ export interface MovieRecommeded {
 }
 
 export const HOME = () => {
-  const [moviesData, setMoviesData] = useState<MovieTrending[]>([]);
+  const [moviesData, setMoviesData] = useState<Movie[]>([]);
   const [movieRecommended, setmovieRecommended] = useState<MovieRecommeded[]>(
     []
   );
@@ -45,19 +46,48 @@ export const HOME = () => {
   const [sectionVisibility, setSectionVisibility] = useState<string>("all");
 
   useEffect(() => {
-    // Fetch JSON data
-    fetch("./src/data.json")
-      .then((response) => response.json())
-      .then((data) => setMoviesData(data))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []); // Empty dependency array ensures the effect runs only once
+    // Fetch JSON data and set both moviesData and movieRecommended
+    // const fetchData = async () => {
+    //   try {
+    //     // Assuming that your data.json contains both trending and regular thumbnails
+    //     await fetch("/src/data.json").
+    //     then((response) => {
+    //       if (!response.ok) {
+    //         throw new Error(`HTTP error! Status: ${response.status}`);
+    //       }
+    //       return response.json();
+    //     }).then((obj) => {
+    //         setMoviesData(obj);
+    //         setmovieRecommended(obj);
+    //     });
+        
+    //   } catch (error) {
+    //     console.error("Error fetching data:", error);
+    //   }
+    // };
+    function validateMovieData(data: any): Movie[] {
+      // Your validation logic here, you might need to adjust this based on your data structure
+      if (Array.isArray(data) && data.length > 0) {
+        return data as Movie[];
+      } else {
+        throw new Error('Invalid data format');
+      }
+    }
 
-  useEffect(() => {
-    // Fetch JSON data
-    fetch("./src/data.json")
-      .then((response) => response.json())
-      .then((data) => setmovieRecommended(data))
-      .catch((error) => console.error("Error fetching data:", error));
+    function validateMovieRecommendedData(data: any ): MovieRecommeded[] {
+      // Your validation logic here, you might need to adjust this based on your data structure
+      if (Array.isArray(data) && data.length > 0) {
+        return data as MovieRecommeded[];
+      } else {
+        throw new Error('Invalid data format');
+      }
+    }
+    
+
+    setMoviesData(validateMovieData(data));
+    setmovieRecommended(validateMovieRecommendedData(data));
+
+    // fetchData();
   }, []); // Empty dependency array ensures the effect runs only once
 
   const [hoveredStates, setHoveredStates] = useState(
@@ -91,6 +121,7 @@ export const HOME = () => {
       setSectionVisibility("searchResults");
     }
   };
+
 
   return (
     <>
@@ -130,9 +161,10 @@ export const HOME = () => {
                           {/* Use media queries for responsive thumbnails */}
                           <img
                             src={
-                              window.innerWidth <= 768
+                              
+                              (window.innerWidth <= 768
                                 ? movie.thumbnail.trending.small
-                                : movie.thumbnail.trending.large
+                                : movie.thumbnail.trending.large)
                             }
                             alt={movie.title}
                           />
@@ -291,7 +323,6 @@ export const HOME = () => {
             </div>
           </div>
         )}
-
 
       </div>
     </>

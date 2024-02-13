@@ -1,4 +1,4 @@
-import Logo from "../assets/svg_files/logo.svg";
+import Logo from "/assets/svg_files/logo.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth/cordova";

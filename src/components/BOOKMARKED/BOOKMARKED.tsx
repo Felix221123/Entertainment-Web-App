@@ -1,14 +1,11 @@
-import SEARCHICON from "../assets/svg_files/icon-search.svg";
-import EMPTYBOOKMARKEDICON from "../assets/svg_files/icon-bookmark-empty.svg";
-import PLAYICON from "../assets/svg_files/icon-play.svg";
-import NAVMOVIESICON from "../assets/svg_files/icon-nav-movies.svg";
-import FULLBOOKMARKEDICON from "../assets/svg_files/icon-bookmark-full.svg";
+import SEARCHICON from "/assets/svg_files/icon-search.svg";
+import EMPTYBOOKMARKEDICON from "/assets/svg_files/icon-bookmark-empty.svg";
+import PLAYICON from "/assets/svg_files/icon-play.svg";
+import NAVMOVIESICON from "/assets/svg_files/icon-nav-movies.svg";
+import FULLBOOKMARKEDICON from "/assets/svg_files/icon-bookmark-full.svg";
 import "./bookmarkedStyles.css";
 import { useState } from "react";
 import { useBookmarkContext } from "./BookmarkContext";
-
-
-
 
 export interface MovieData {
   isTrending: boolean;

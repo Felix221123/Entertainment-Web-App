@@ -1,12 +1,12 @@
-import SEARCHICON from "../assets/svg_files/icon-search.svg";
-import EMPTYBOOKMARKEDICON from "../assets/svg_files/icon-bookmark-empty.svg";
-import PLAYICON from "../assets/svg_files/icon-play.svg";
-import NAVMOVIESICON from "../assets/svg_files/icon-nav-movies.svg";
-import FULLBOOKMARKEDICON from "../assets/svg_files/icon-bookmark-full.svg";
+import SEARCHICON from "/assets/svg_files/icon-search.svg";
+import EMPTYBOOKMARKEDICON from "/assets/svg_files/icon-bookmark-empty.svg";
+import PLAYICON from "/assets/svg_files/icon-play.svg";
+import NAVMOVIESICON from "/assets/svg_files/icon-nav-movies.svg";
+import FULLBOOKMARKEDICON from "/assets/svg_files/icon-bookmark-full.svg";
 import "./tvSeries.css";
 import { useEffect, useState } from "react";
 import { useBookmarkContext } from "../BOOKMARKED/BookmarkContext";
-
+import data from "../../data.json";
 
 interface MovieRecommeded {
   isTrending: boolean;
@@ -31,10 +31,21 @@ export const TVSERIES = () => {
 
   useEffect(() => {
     // Fetch JSON data
-    fetch("./src/data.json")
-      .then((response) => response.json())
-      .then((data) => setMoviesData(data))
-      .catch((error) => console.error("Error fetching data:", error));
+    // fetch("src/data.json")
+    //   .then((response) => response.json())
+    //   .then((data) => setMoviesData(data))
+    //   .catch((error) => console.error("Error fetching data:", error));
+    
+    function validateMovieRecommendedData(data: any): MovieRecommeded[] {
+      // Your validation logic here, you might need to adjust this based on your data structure
+      if (Array.isArray(data) && data.length > 0) {
+        return data as MovieRecommeded[];
+      } else {
+        throw new Error('Invalid data format');
+      }
+    }
+    
+      setMoviesData(validateMovieRecommendedData(data))
   }, []); // Empty dependency array ensures the effect runs only once
 
   const [hoveredStates, setHoveredStates] = useState(

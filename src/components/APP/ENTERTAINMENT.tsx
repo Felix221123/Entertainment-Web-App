@@ -1,9 +1,9 @@
-import NAVMOVIESICON from "../assets/svg_files/icon-nav-movies.svg";
-import NAVTVSERIES from "../assets/svg_files/icon-nav-tv-series.svg";
-import NAVBOOKMARKEDICON from "../assets/svg_files/icon-nav-bookmark.svg";
-import NAVHOMEICON from "../assets/svg_files/icon-nav-home.svg";
-import ENTERTAINMENTICON from "../assets/svg_files/logo.svg";
-import AVATARICON from "../assets/svg_files/image-avatar.png";
+import NAVMOVIESICON from "../../../public/assets/svg_files/icon-nav-movies.svg";
+import NAVTVSERIES from "../../../public/assets/svg_files/icon-nav-tv-series.svg";
+import NAVBOOKMARKEDICON from "../../../public/assets/svg_files/icon-nav-bookmark.svg";
+import NAVHOMEICON from "../../../public/assets/svg_files/icon-nav-home.svg";
+import ENTERTAINMENTICON from "../../../public/assets/svg_files/logo.svg";
+import AVATARICON from "../../../public/assets/svg_files/image-avatar.png";
 import { TVSERIES } from "../TVSERIES/TVSERIES";
 import { HOME } from "../HOME/HOME";
 import { MOVIES } from "../MOVIES/MOVIES";
